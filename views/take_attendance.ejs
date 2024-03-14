@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <form action="/hod/getTable" method="post">
+    <form action="/<%=user_id.role%>/getTable" method="post">
         <select name="course" id="course">
             <option value="">select a course</option>
             <option value="Diploma">Diploma</option>
@@ -26,10 +26,8 @@
         <button type="submit" id="submit_btn">submit</button>
     </form>
 
-    <form action="/hod/addAttendance" method="post">
+    <form action="/<%=user_id.role%>/addAttendance" method="post">
 
-        
-    
         <table border="1">
             <tr>
                 <th>srno</th>
@@ -57,6 +55,6 @@
         <button id="reset">reset</button>
         <button type="submit" id="submit">submit</button>
     </form>
-    <script src="../js/dummy.js" type="module"></script>
+    <script src="../js/take_attendance.js" type="module"></script>
 </body>
 </html>

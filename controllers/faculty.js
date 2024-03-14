@@ -5,7 +5,9 @@ let attendance = 'attendance'
 // let users = 'users'
 let subjects = 'subjects'
 let master_table = `master_table`
-let subject_master_table = `d_2`
+let subject_master_table = `dummy_1`
+
+
 
 module.exports = {
     getHome: (request, response) => {
@@ -204,13 +206,23 @@ module.exports = {
     },
 
     take_attendance: async(request,response)=>{
-        response.render('dymmy.ejs', {user_id: request.session.user_id, send_data: "null", error: "noError", attendance: "no"})
+        response.render('take_attendance.ejs', {user_id: request.session.user_id, send_data: "null", error: "noError", attendance: "no"})
+    },
+
+    show_taken_attendance: async(request,response)=>{
+        response.render('show_taken_attendance.ejs', {user_id: request.session.user_id, send_data: "null", error: "noError", attendance: "no"})
     },
 
     getTable: async(request,response)=>{
         let data = await dbs.queries([`select sr_no, Enrollment_no, Student_name from ${subject_master_table} where sr_no > 0`])
         console.log(request.body)
-        response.render('dymmy.ejs', {user_id: request.session.user_id, send_data: "null", error: "noError", attendance: data[0]})
+        response.render('take_attendance.ejs', {user_id: request.session.user_id, send_data: "null", error: "noError", attendance: data[0]})
+    },
+
+    showTable: async(request,response)=>{
+        let data = await dbs.queries([`select * from ${subject_master_table} where sr_no > 0`])
+        console.log(request.body)
+        response.render('show_taken_attendance.ejs', {user_id: request.session.user_id, send_data: "null", error: "noError", attendance: data[0]})
     },
 
     courses: async(request,response)=>{
@@ -254,4 +266,30 @@ module.exports = {
             }
         });
     },
+
+    upload_page: async(req, res) => {
+        res.render('convert.ejs', {user_id: req.session.user_id})
+    },
+
+    uploads_file: async(req, res) => {
+
+        // const fs = require("fs");
+        // const { parse } = require("csv-parse");
+        // let schema = []
+
+        // fs.createReadStream(`${req.file.destination}/${req.file.filename}`)
+        //     .pipe(parse({ delimiter: ",", from_line: 1, to_line: 1 }))
+        //     .on("data", async (row) => {
+        //         console.log(row)
+
+                
+        //     })
+        // console.log(req.body)
+        console.log(req.file)
+        console.log(__dirname + req.file.path)
+
+        let data = await dbs.dummy([`LOAD DATA LOCAL INFILE '${__dirname}${req.file.path}' INTO TABLE test_1 FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;`], ['CREATE TABLE test_1 AS SELECT * FROM d_2;'],"test_1")
+
+        console.log("table created successfully")
+    }
 }

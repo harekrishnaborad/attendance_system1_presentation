@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="/<%=user_id.role%>/showTable" method="post">
+        <select name="course" id="course">
+            <option value="">select a course</option>
+            <option value="Diploma">Diploma</option>
+            <option value="Degree">Degree</option>
+        </select>
+        
+        <select name="branch" id="branch">
+            <option value="">select a branch</option>
+        </select>
+        <select name="sem" id="sem">
+            <option value="">select a semister</option>
+        </select>
+        <select name="subject" id="subject">
+            <option value="">select a subject</option>
+        </select>
+        <button type="submit" id="submit_btn">submit</button>
+    </form>
+
+    <form>
+
+        <table border="1">
+            <tr>
+                <th>srno</th>
+                <!-- <th><input type="checkbox" name="selectAll" id="selectAll"> <label for="selectAll">selectAll</label></th> -->
+                <th>enrollment no</th>
+                <th>name</th>
+                <th>Day 1</th>
+                <th>Day 2</th>
+                <th>Day 3</th>
+                <th>Day 4</th>
+                <th>Day 5</th>
+                <th>Day 6</th>
+                <th>Day 7</th>
+                <th>Day 8</th>
+                <th>Day 9</th>
+                <th>Day 10</th>
+                <th>Day 11</th>
+                <th>Day 12</th>
+                <th>Day 13</th>
+                <th>Day 14</th>
+                <th>Day 15</th>
+                <th>Day 16</th>
+                <th>Day 17</th>
+                <th>Day 18</th>
+                <th>Day 19</th>
+                <th>Day 20</th>
+                <th>Day 21</th>
+                <th>Day 22</th>
+                <th>Day 23</th>
+                <th>Day 24</th>
+                <th>Day 25</th>
+                <th>Day 26</th>
+                <th>Day 27</th>
+                <th>Day 28</th>
+                <th>Day 29</th>
+                <th>Day 30</th>
+                <th>Day 31</th>
+                <th>Total</th>
+            </tr>
+            <% if(attendance != "no"){ %>
+    
+                <% for(let i = 0; i < attendance.length; i++){ %>
+                    <tr>
+                        <td><%= attendance[i].sr_no %></td>
+                        <!-- <td><input type="checkbox" name="<%= attendance[i].Enrollment_no %>" class="options" id="<%= attendance[i].Enrollment_no %>"> <label id="<%= attendance[i].Enrollment_no %>_label" for="<%= attendance[i].Enrollment_no %>" class="label_name">p/a</label></td> -->
+                        <td><%= attendance[i].Enrollment_no %></td>
+                        <td><%= attendance[i].Student_name %></td>
+                        <td><%= attendance[i].D_1%></td>
+                        <td><%= attendance[i].D_2%></td>
+                        <td><%= attendance[i].D_3%></td>
+                        <td><%= attendance[i].D_4%></td>
+                        <td><%= attendance[i].D_5%></td>
+                        <td><%= attendance[i].D_6%></td>
+                        <td><%= attendance[i].D_7%></td>
+                        <td><%= attendance[i].D_8%></td>
+                        <td><%= attendance[i].D_9%></td>
+                        <td><%= attendance[i].D_10%></td>
+                        <td><%= attendance[i].D_11%></td>
+                        <td><%= attendance[i].D_12%></td>
+                        <td><%= attendance[i].D_13%></td>
+                        <td><%= attendance[i].D_14%></td>
+                        <td><%= attendance[i].D_15%></td>
+                        <td><%= attendance[i].D_16%></td>
+                        <td><%= attendance[i].D_17%></td>
+                        <td><%= attendance[i].D_18%></td>
+                        <td><%= attendance[i].D_19%></td>
+                        <td><%= attendance[i].D_20%></td>
+                        <td><%= attendance[i].D_21%></td>
+                        <td><%= attendance[i].D_22%></td>
+                        <td><%= attendance[i].D_23%></td>
+                        <td><%= attendance[i].D_24%></td>
+                        <td><%= attendance[i].D_25%></td>
+                        <td><%= attendance[i].D_26%></td>
+                        <td><%= attendance[i].D_27%></td>
+                        <td><%= attendance[i].D_28%></td>
+                        <td><%= attendance[i].D_29%></td>
+                        <td><%= attendance[i].D_30%></td>
+                        <td><%= attendance[i].D_31%></td>
+                        <td><%= attendance[i].total%></td>
+                    </tr>
+                <% } %>
+            <% } %>
+        </table>
+    
+        <!-- <input type="radio" name="attendance" id="present" value="present">
+        <label for="present">present</label>
+        <input type="radio" name="attendance" id="absent" value="absent">
+        <label for="absent">absent</label>
+        <button id="reset">reset</button>
+        <button type="submit" id="submit">submit</button> -->
+    </form>
+    <script src="../js/show_taken_attendance.js" type="module"></script>
+</body>
+</html>

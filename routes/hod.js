@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const hodController = require('../controllers/hod')
 const facultyController = require('../controllers/faculty')
+const multer  = require('multer')
 
 
 const isAuth = (req, res, next) => {
@@ -14,11 +15,25 @@ const isAuth = (req, res, next) => {
     }
 }
 
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './tmp/my_uploads')
+    },
+    filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        cb(null, `${file.fieldname}-${Date.now()}.csv` )
+    }
+})
+
+const upload = multer({storage})
+
 router.get('/attendance_exists',isAuth, facultyController.attendance_exists)
 
 
 router.get('/',isAuth, hodController.getHome)
+router.get('/uploads',isAuth, facultyController.upload_page)
 router.get('/take_attendance',isAuth, facultyController.take_attendance)
+router.get('/show_taken_attendance',isAuth, facultyController.show_taken_attendance)
 
 router.get('/scanner', isAuth,facultyController.getScanner)
 router.get('/show_attendance',isAuth, facultyController.show_attendance)
@@ -47,6 +62,8 @@ router.post('/logout', isAuth, hodController.logout)
 // router.post('/courses', isAuth, hodController.courses)
 router.post('/addAttendance', isAuth, facultyController.addAttendance)
 router.post('/getTable', isAuth,facultyController.getTable)
+router.post('/showTable', isAuth,facultyController.showTable)
+router.post('/uploads_file', [isAuth, upload.single("upload_file")],facultyController.uploads_file)
 
 
 

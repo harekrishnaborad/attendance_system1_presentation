@@ -3,19 +3,19 @@
 
 
 module.exports = {
-    queries: async (sql_query) =>{
+    queries: async (sql_query) => {
         let return_data = []
-        
+
         for (let i = 0; i < sql_query.length; i++) {
             const element = sql_query[i];
-    
+
             const mysql = require('mysql2/promise');
             const pool = mysql.createPool(
-                { 
-                    host: "127.0.0.1", 
-                    user: "root", 
-                    password: "codeM_0007", 
-                    database: "student" 
+                {
+                    host: "127.0.0.1",
+                    user: "root",
+                    password: "codeM_0007",
+                    database: "student"
                 }
             );
             let data = await Promise.all([
@@ -26,17 +26,17 @@ module.exports = {
         }
         return return_data
     },
-    
-    dummy: async (sql_query_success, sql_query_fail, table_name) =>{
+
+    dummy: async (sql_query_success, sql_query_fail, table_name) => {
         let return_data = []
 
         const mysql = require('mysql2/promise');
         const pool = mysql.createPool(
-            { 
-                host: "127.0.0.1", 
-                user: "root", 
-                password: "codeM_0007", 
-                database: "student" 
+            {
+                host: "127.0.0.1",
+                user: "root",
+                password: "codeM_0007",
+                database: "student"
             }
         );
         let data = await Promise.all([
@@ -50,14 +50,14 @@ module.exports = {
         if (table_exists > 0) {
             for (let i = 0; i < sql_query_success.length; i++) {
                 const element = sql_query_success[i];
-        
+
                 const mysql = require('mysql2/promise');
                 const pool = mysql.createPool(
-                    { 
-                        host: "127.0.0.1", 
-                        user: "root", 
-                        password: "codeM_0007", 
-                        database: "student" 
+                    {
+                        host: "127.0.0.1",
+                        user: "root",
+                        password: "codeM_0007",
+                        database: "student"
                     }
                 );
                 let data = await Promise.all([
@@ -67,18 +67,18 @@ module.exports = {
                 await pool.end();
             }
         }
-        
-        else{
+
+        else {
             for (let i = 0; i < sql_query_fail.length; i++) {
                 const element = sql_query_fail[i];
-        
+
                 const mysql = require('mysql2/promise');
                 const pool = mysql.createPool(
-                    { 
-                        host: "127.0.0.1", 
-                        user: "root", 
-                        password: "codeM_0007", 
-                        database: "student" 
+                    {
+                        host: "127.0.0.1",
+                        user: "root",
+                        password: "codeM_0007",
+                        database: "student"
                     }
                 );
                 let data = await Promise.all([
@@ -89,14 +89,14 @@ module.exports = {
             }
             for (let i = 0; i < sql_query_success.length; i++) {
                 const element = sql_query_success[i];
-        
+
                 const mysql = require('mysql2/promise');
                 const pool = mysql.createPool(
-                    { 
-                        host: "127.0.0.1", 
-                        user: "root", 
-                        password: "codeM_0007", 
-                        database: "student" 
+                    {
+                        host: "127.0.0.1",
+                        user: "root",
+                        password: "codeM_0007",
+                        database: "student"
                     }
                 );
                 let data = await Promise.all([
@@ -107,5 +107,5 @@ module.exports = {
             }
         }
         return return_data
-    }
+    },
 }
