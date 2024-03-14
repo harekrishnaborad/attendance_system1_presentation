@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css/utility.css">
+</head>
+<body>
+    <a href="/<%=user_id.role%>"><i class='bx bxs-home'></i></a>
+    <div class="center font_size">
+        <form action="/<%=user_id.role%>/showAttendance" method="post">
+            <select name="date" class="font_size padding">
+                <option value="">Select Date</option>
+                <% for(let i = 0; i < distinct_date.length; i++){ %>
+                    <option value="<%= distinct_date[i].date %>"><%= distinct_date[i].date %></option>
+                <% } %>
+            </select>
+            <select name="subject" class="font_size padding">
+                <option value="">Select Subject</option>
+                <% for(let i = 0; i < distinct_subject.length; i++){ %>
+                    <option value="<%= distinct_subject[i].subject %>"><%= distinct_subject[i].name %></option>
+                <% } %>
+            </select>
+            <br>
+            <div class="center margin_top">    
+                <button type="submit" class="font_size padding btn">Submit</button>
+            </div>
+        </form>
+    
+        <main>
+            <table id="tableId">
+                <tr >
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Subject</th>
+                    <th>Enrollment No</th>
+                </tr>
+    
+                <% if(result_attendance != "no"){ %>
+    
+                    <% for(let i = 0; i < result_attendance.length; i++){ %>
+                        <tr>
+                            <!-- <td><%= result_attendance[i].id %></td> -->
+                            <td><%= result_attendance[i].date %></td>
+                            <td><%= result_attendance[i].time %></td>
+                            <td><%= result_attendance[i].subject %></td>
+                            <td><%= result_attendance[i].present %></td>
+                        </tr>
+                    <% } %>
+                <% } %>
+            </table>
+            <div class="center margin_top">
+                <button id="exportButton" class="font_size padding btn" >Export to Excel</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/export.js"></script>
+</body>
+</html>

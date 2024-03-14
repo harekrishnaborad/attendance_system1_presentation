@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<link rel="stylesheet" href="../css/faculty_home.css">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <a id="scanner" href="/hod/take_attendance">take attendance</a>
+            <a id="scanner" href="/faculty/scanner"> <i class='bx bx-qr-scan'></i> Scanner Here </a>
+            <a id="show_attendance" href="/faculty/show_attendance"><i class='bx bxs-show'></i>Show Attendance</a>
+            <a id="update" href="/faculty/update_attendance"><i class='bx bxs-edit'></i>Update Attendance</a>
+            <a id="delete" href="/faculty/delete_attendance"><i class='bx bxs-trash' ></i>Delete Attendance</a>
+            <form action="<%=user_id.role%>/logout" method="post" class="logout">
+                <button id="log_btn"><i class='bx bx-log-out'></i>Logout</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

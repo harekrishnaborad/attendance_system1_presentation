@@ -1,0 +1,43 @@
+/* body{
+    background-color: rgba(0, 128, 0, 0.2);
+    height: 100vh;
+    width: 100%;
+    background-image: url("../img/mu_2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+} */
+
+main, footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#reader {
+    width: 600px;
+    /* border-radius: 10px; */
+}
+#result, .result{
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+footer{
+    flex-direction: column;
+    margin-top: 50px;
+}
+#submit_button{
+    margin-top: 15px;
+}
+#button a{
+    text-decoration: none;
+    color: black;
+}
+
+
+
+
+
+

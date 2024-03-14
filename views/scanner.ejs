@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/utility.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <a href="/<%=user_id.role%>"><i class='bx bxs-home'></i></a>
+    <div>
+        <main>
+            <div id="reader"  class="scanner padding color_white"></div>
+            <div id="result" class="padding color_white"></div>
+            <select name="subject" id="subject_name" class="padding">
+                <option value="">select subject</option>
+                <% for(let i = 0; i < subjects.length; i++){ %>
+                    <option value="<%= subjects[i].name %>"><%= subjects[i].name %></option>
+                <% } %>
+            </select>
+            <button id="submit_button" type="submit" class="font_size padding btn">Submit</button>
+        </main>
+        <footer id="footer">
+            <h2 class="color_white">OR</h2>
+            <h2 class="color_white">Enter Manually</h2>
+            <form action="/<%=user_id.role%>/manually_add_user" method="post" class="center">
+                <select name="subject" id="subject_name" class="padding">
+                    <option value="">Select Subject</option>
+                    <% for(let i = 0; i < subjects.length; i++){ %>
+                        <option value="<%= subjects[i].name %>"><%= subjects[i].name %></option>
+                    <% } %>
+                </select>
+                <input class="padding" id="input_field" type="number" placeholder="Enrollment NO" name="enno">
+                <button type="submit" class="font_size padding btn">Submit</button>
+            </form>
+        </footer>
+    </div>
+
+    <!-- <button id="stop_scanning">stop scanning</button> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.4/html5-qrcode.min.js" integrity="sha512-k/KAe4Yff9EUdYI5/IAHlwUswqeipP+Cp5qnrsUjTPCgl51La2/JhyyjNciztD7mWNKLSXci48m7cctATKfLlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script src='../js/main.js'></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css/utility.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <a href="/<%=user_id.role%>"><i class='bx bxs-home'></i></a>
+    <main>
+        <form class="center" action="/hod/createSubject" method="post">
+            <input class="padding" type="text" name="subject_name" placeholder="Enter Subject Name:- ">
+            <button type="submit" class="font_size padding btn">Create</button>
+        </form>
+    </main>
+</body>
+</html>

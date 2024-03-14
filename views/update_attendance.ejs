@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css/utility.css">
+</head>
+<body>
+    <a href="/<%=user_id.role%>"><i class='bx bxs-home'></i></a>
+    <form action="/<%=user_id.role%>/updateAttendance" method="post" class="center font_size">
+        <input class="padding" type="date" name="date">
+        <input class="padding" type="time" name="time">
+        <input class="padding" type="number" name="enno" placeholder="Enrollment Number">
+        <select class="padding" name="subject" id="subject_name">
+            <option value="">Select Subject</option>
+            <% for(let i = 0; i < subjects.length; i++){ %>
+                <option value="<%= subjects[i].name %>"><%= subjects[i].name %></option>
+            <% } %>
+        </select>
+        <button type="submit" class="font_size padding btn">Submit</button>
+    </form>
+</body>
+</html>

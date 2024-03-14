@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css/utility.css">
+</head>
+<body>
+    <a href="/<%=user_id.role%>"><i class='bx bxs-home'></i></a>
+    <form class="center" action="/hod/updateSubject" method="post">
+        <input class="padding" type="text" placeholder="Previous Name" name="previous_name">
+        <input class="padding" type="text" placeholder="New Name" name="new_name">
+        <button class="font_size padding btn" type="submit">Update</button>
+    </form>
+</body>
+</html>
