@@ -5,12 +5,15 @@ const facultyController = require('../controllers/faculty')
 
 
 const isAuth = (req, res, next) => {
-    if(req.session.isAuth){
+    if(req.session.isAuth && req.session.user_id.role == 'hod'){
         next()
+    }else if (req.session.isAuth) {
+        res.redirect('/faculty')
     }else{
         res.redirect('/login')
     }
 }
+
 router.get('/attendance_exists',isAuth, facultyController.attendance_exists)
 
 

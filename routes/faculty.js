@@ -2,8 +2,10 @@ const express = require('express')
 const router = express.Router()
 const facultyController = require('../controllers/faculty')
 const isAuth = (req, res, next) => {
-    if(req.session.isAuth){
+    if(req.session.isAuth && req.session.user_id.role == 'faculty'){
         next()
+    }else if (req.session.isAuth) {
+        res.redirect('/hod')
     }else{
         res.redirect('/login', {info: "error"})
     }
